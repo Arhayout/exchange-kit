@@ -1,0 +1,21 @@
+Benchmark results (cargo bench, aarch64-apple-darwin, rustc nightly-2026-09-27 / 1.101.0)
+Recorded: 2026-09-28
+
+Toolchain pinned in rust-toolchain.toml to nightly-2026-09-27.
+Absolute ns/iter vary by machine; re-run `cargo bench` locally.
+
+bench_no_writes_ten_reads_latest                  ~5.15 ns/iter
+bench_no_writes_ten_reads_ordered                 ~76.6 ns/iter
+bench_single_write_single_read_latest             ~4.7 ns/iter
+bench_single_write_single_read_ordered            ~45.4 ns/iter
+bench_fifty_writes_single_read_latest             ~29.7 ns/iter
+bench_fifty_writes_single_read_ordered            ~260 ns/iter
+bench_fifty_writes_read_until_empty_latest        ~30.9 ns/iter
+bench_fifty_writes_read_until_empty_ordered       ~469 ns/iter
+bench_tenthousand_writes_read_until_empty_latest  ~4.93 µs/iter
+bench_tenthousand_writes_read_until_empty_ordered ~85.5 µs/iter
+
+Notes:
+- LatestSharedData: portable-atomic AtomicU128 packed {tag, bits}, CAS take
+- OrderedSharedData: Mutex<Vec + head cursor>, reclaim on full drain
+- Signature values: RFC 3986 percent-encoding (percent-encoding crate)

@@ -1,0 +1,28 @@
+[package]
+name = "exchange-kit"
+version = "0.1.0"
+edition = "2021"
+description = "Exchange integration primitives: HMAC request signing, order-book stream replay, and concurrent shared state"
+license = "MIT"
+authors = ["Abdelmalek Rhayoute"]
+readme = "README.md"
+keywords = ["trading", "exchange", "orderbook", "hmac", "concurrency"]
+categories = ["concurrency", "cryptography", "finance"]
+
+[dependencies]
+chrono = "0.4.26"
+rust_decimal = "1.29.1"
+rust_decimal_macros = "1.29.1"
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+percent-encoding = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+portable-atomic = "1"
+
+[dev-dependencies]
+rand = "0.8.5"
+
+[lints.clippy]
+needless_return = "allow"
